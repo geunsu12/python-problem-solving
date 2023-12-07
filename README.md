@@ -57,7 +57,7 @@
             <td align="center">8</td>
             <td>1863</td>
             <td><img src="https://img.shields.io/badge/Gold%204-gold?style=flat-square"></td>
-            <td>-</td>
+            <td>구현</td>
         </tr>        
         <tr>
             <td align="center">9</td>
