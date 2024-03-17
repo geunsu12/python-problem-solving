@@ -1,24 +1,30 @@
-n,d = map(int,input().split())
+import sys
 
-road = []
-for _ in range(n):
-    road.append(list(map(int,input().split())))
+input = sys.stdin.readline
 
-road.sort(key = lambda x:x[0])
+n, d = map(int, input().split())
 
-minv = 9999999
+shortcut = []
+visit = [False]*n
 
-def dfs(y,driveLen):
+for i in range(n):
+    shortcut.append(list(map(int,input().rstrip().split())))
+
+now = 0
+minv = 999999
+
+def dfs(now,total):
     global minv
-    print(y,driveLen)
-    if y >= road[-1][1] and :
-        minv = min(minv,driveLen)
-        return 0
-    for i in range(len(road)):
-        if road[i][0] >= y and road[i][1] <=d:
-            ny = road[i][1]
-            dfs(ny,driveLen+road[i][2]+road[i][])
+    # print("now : ",now,"total : ",total, "minv : ",minv)
+    if now == d:
+        minv = min(minv,total)
+        return
+    for i in range(n):
+        if visit[i] == False and shortcut[i][0] >= now and shortcut[i][1] <= d:
+            visit[i] = True
+            dfs(shortcut[i][1], total + (shortcut[i][0]-now + shortcut[i][2]))         
+            visit[i] = False
+    minv = min(minv,total+(d-now))
 
 dfs(0,0)
-
 print(minv)
